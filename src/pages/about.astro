@@ -1,5 +1,14 @@
 ---
+const title = 'Sobre Mi';
 
+const identity = {
+	firstName: "Hector",
+	country: "Mexico",
+	occupation: "Pasante en Desarrollador Web",
+	hobbies: ["basquetbool", "videojuegos"],
+};
+
+const skills = ["HTML", "CSS", "JavaScript", "Asp.net", "Git", "Astro"];
 ---
 <html lang="en">
 	<head>
@@ -7,19 +16,36 @@
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>{title}</title>
 	</head>
 	<body>
 		<a href="/">Home</a>
 		<a href="/about">About</a>
 		<a href="/blog">Blog</a>
 
-		<h1> Sobre mi</h1>
+		<h1> {title}</h1>
 
         <h2> ... ¡ y mi nuevo sitio Astro !</h2>
 
         <p>estoy trabajando en el tutorial de la introduccion de astro. Este es mi segunda pagina de mi sitio web, y !esto es lo que hablara sobre mi!</p>
 
         <p>este sitio se actualizara como complete mas del tutorial,sigue visitandome y mira como es mi viaje</p>
+
+
+		<p>here are a few facts about me:</p>
+
+		<ul>
+			<li>Yo soy {identity.firstName}</li>
+			<li>vivo en {identity.country} y trabajo de {identity.occupation}</li>
+			{identity.hobbies.length >= 2 &&
+				<li>dos de mis hobbies son {identity.hobbies[0]} y {identity.hobbies[1]}</li>
+			}
+		</ul>
+
+		<p>Mys skills son: </p>
+
+		<ul>
+			{skills.map((skill) => <li>{skill}</li>)}
+		</ul>
 	</body>
 </html>
