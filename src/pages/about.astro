@@ -1,4 +1,9 @@
 ---
+
+import Footer from '../components/Footer.astro';
+import Navigation from '../components/Navigation.astro';
+import '../styles/global.css';
+
 const title = 'Sobre Mi';
 
 const identity = {
@@ -9,6 +14,10 @@ const identity = {
 };
 
 const skills = ["HTML", "CSS", "JavaScript", "Asp.net", "Git", "Astro"];
+
+const Color = "navy";
+const fontWeight = "bold";
+const textCase = "uppercase";
 ---
 <html lang="en">
 	<head>
@@ -17,11 +26,21 @@ const skills = ["HTML", "CSS", "JavaScript", "Asp.net", "Git", "Astro"];
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
+
+		<style define:vars={{ Color, fontWeight, textCase }}>
+		h1 {
+		color: purple;
+		font-size: 4rem;
+		}
+		.skill {
+		color: var(--Color);
+		font-weight: var(--fontWeight);
+		text-transform: var(--textCase);
+	}
+    </style>
 	</head>
 	<body>
-		<a href="/">Home</a>
-		<a href="/about">About</a>
-		<a href="/blog">Blog</a>
+		<Navigation />
 
 		<h1> {title}</h1>
 
@@ -45,7 +64,9 @@ const skills = ["HTML", "CSS", "JavaScript", "Asp.net", "Git", "Astro"];
 		<p>Mys skills son: </p>
 
 		<ul>
-			{skills.map((skill) => <li>{skill}</li>)}
+			{skills.map((skill) => <li class="skill">{skill}</li>)}
 		</ul>
+
+		<Footer />
 	</body>
 </html>
